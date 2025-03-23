@@ -6,7 +6,11 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@types/qs": "^6.9.18",
+    "axios": "^1.8.4",
+    "dayjs": "^1.11.13",
+    "elysia": "latest",
+    "qs": "^6.14.0"
   },
   "devDependencies": {
     "bun-types": "latest"
