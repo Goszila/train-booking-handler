@@ -26,6 +26,7 @@ export default async function checkAvailable() {
     )
 
   const checkAvailableService = new CheckAvailableService();
+  await checkAvailableService.setCookie();
 
   const response: Array<TripResponse> = []
   const tripsPromises = nextThreeMonths.map(async (date) => {
@@ -40,7 +41,6 @@ export default async function checkAvailable() {
 
     await Promise.all(trips.map(async (trip) => {
       const coaches = await checkAvailableService.getCoaches(trip.tripId);
-      console.log('coaches=>', JSON.stringify(coaches));
       response.push({
         ...trip,
         bogies: coaches.data.results.filter(coach => coach.coachAirTypeEn === "Air Coach" && coach.availableSeatCount > 0)

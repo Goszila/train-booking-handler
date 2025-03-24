@@ -1,11 +1,12 @@
 export interface ICheckAvailable {
   getTrip: (data: any) => Promise<ICheckTripResponse>;
   getCoaches: (data: any) => Promise<IGetBogyResponse>;
+  setCookie: () => void;
 }
 
 export interface ICheckTripResponse {
   errorSource: any
-  errorCode: string
+  setCookie: () => void;
   errorMessage: any
   errorParams: any
   data: Daum[]
