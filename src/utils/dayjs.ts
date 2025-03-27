@@ -1,23 +1,23 @@
 import dayjs from "dayjs";
 
 // get all friday and saturday dates in the next 3 months function
-export function getDates(numDays: number[]) {
+export function getDates(numOfDays: number[]) {
   const dates = [];
   let currentMonth = dayjs().month() + 1;
   for (let i = currentMonth; currentMonth < i + 3; currentMonth++) {
-    dates.push(...getFridaysInMonth(2025, currentMonth));
+    dates.push(...getFridaysInMonth(2025, currentMonth, numOfDays));
   }
   return dates;
 }
 
-function getFridaysInMonth(year: number, month: number) {
+function getFridaysInMonth(year: number, month: number, numOfDays: number[] = []) {
   const fridays = [];
   const daysInMonth = dayjs(`${year}-${month}-01`).daysInMonth();
 
   for (let day = 1; day <= daysInMonth; day++) {
     const date = dayjs(`${year}-${month}-${day}`);
     const currentDate = dayjs();
-    if ([5, 6].includes(date.day()) && date.isAfter(currentDate)) { // 5 represents Friday
+    if (numOfDays.includes(date.day()) && date.isAfter(currentDate)) { // 5 represents Friday
       fridays.push(date.format('YYYY-MM-DD'));
     }
   }

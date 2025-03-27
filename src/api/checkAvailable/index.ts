@@ -20,7 +20,7 @@ interface TripResponse {
 
 
 export default async function checkAvailable() {
-  const nextThreeMonths = getDates()
+  const nextThreeMonths = getDates([5, 6])
     .map(
       (date) => dayjs(date, 'YYYY-MM-DD').format('DD/MM/YYYY')
     )
