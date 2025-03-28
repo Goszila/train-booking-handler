@@ -4,8 +4,7 @@ const { PORT } = process.env
 
 const app = new Elysia().get("/", () => "Hello Elysia")
 
-app.get("/hello", async () => {
-
+app.get("/bkk-nst", async () => {
   return await checkAvailable();
 });
 
